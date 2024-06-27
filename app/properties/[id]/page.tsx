@@ -2,6 +2,7 @@
 
 import PropertyDetails from '@/components/PropertyDetails'
 import PropertyHeaderImage from '@/components/PropertyHeaderImage'
+import Spinner from '@/components/Spinner'
 import { RootType } from '@/types'
 import { fetchProperty } from '@/utils/requests'
 import Link from 'next/link'
@@ -42,6 +43,7 @@ const PropertiesPage = () => {
 
 	return (
 		<>
+			{loading && <Spinner loading={loading} />}
 			{!loading && property && (
 				<>
 					<PropertyHeaderImage image={property.images[0]} />
