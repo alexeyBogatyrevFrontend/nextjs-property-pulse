@@ -1,3 +1,4 @@
+// property
 export type RootType = {
 	_id: string
 	owner: string
@@ -34,4 +35,17 @@ export type Location = {
 	city: string
 	state: string
 	zipcode: string
+}
+
+// google auth
+export type RootGoogleType = {
+	google: Google
+}
+
+export type Google = {
+	id: string
+	name: string
+	type: string
+	signinUrl: string
+	callbackUrl: string
 }
