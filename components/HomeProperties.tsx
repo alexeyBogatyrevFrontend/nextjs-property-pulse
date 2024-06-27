@@ -1,9 +1,13 @@
 import React from 'react'
-import properties from '@/properties.json'
+
 import PropertyCard from './PropertyCard'
 import Link from 'next/link'
+import { fetchProperties } from '@/utils/requests'
+import { RootType } from '@/types'
 
-const HomeProperties = () => {
+const HomeProperties = async () => {
+	const properties: RootType[] = await fetchProperties()
+
 	const recentProperties = properties
 		.sort(() => Math.random() - Math.random())
 		.slice(0, 3)
@@ -19,7 +23,7 @@ const HomeProperties = () => {
 						{recentProperties.length === 0 ? (
 							<p>No Properties Found</p>
 						) : (
-							recentProperties.map(property => (
+							recentProperties.map((property: RootType) => (
 								<PropertyCard key={property._id} property={property} />
 							))
 						)}
