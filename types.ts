@@ -49,3 +49,16 @@ export type Google = {
 	signinUrl: string
 	callbackUrl: string
 }
+
+// user
+export type GoogleUser = {
+	user: User
+	expires: string
+}
+
+export type User = {
+	name: string
+	email: string
+	image: string
+	id: string
+}
