@@ -94,5 +94,6 @@ export type AddProperty = {
 	amenities: string[]
 	rates: RatesAddProperty
 	seller_info: SellerInfoAddProperty
-	images: string[]
+	owner: string
+	images?: string[]
 }
