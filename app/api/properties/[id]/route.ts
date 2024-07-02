@@ -12,6 +12,6 @@ export const GET = async (request: any, { params }: any) => {
 
 		return new Response(JSON.stringify(property), { status: 200 })
 	} catch (error) {
-		return new Response('Someting Went Wrong', { status: 500 })
+		return new Response(`Someting Went Wrong ${error}`, { status: 500 })
 	}
 }

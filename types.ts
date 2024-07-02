@@ -62,3 +62,37 @@ export type User = {
 	image: string
 	id: string
 }
+
+// add property
+export type LocationAddProperty = {
+	street: string
+	city: string
+	state: string
+	zipcode: string
+}
+
+export type RatesAddProperty = {
+	weekly: string
+	monthly: string
+	nightly: string
+}
+
+export type SellerInfoAddProperty = {
+	name: string
+	email: string
+	phone: string
+}
+
+export type AddProperty = {
+	type: string
+	name: string
+	description: string
+	location: LocationAddProperty
+	beds: string
+	baths: string
+	square_feet: string
+	amenities: string[]
+	rates: RatesAddProperty
+	seller_info: SellerInfoAddProperty
+	images: string[]
+}
