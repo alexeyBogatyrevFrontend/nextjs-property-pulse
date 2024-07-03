@@ -3,8 +3,9 @@
 import { AddProperty, RatesAddProperty } from '@/types'
 import { fetchProperty } from '@/utils/requests'
 import { useParams, useRouter } from 'next/navigation'
-import React, { ChangeEvent, useEffect, useState } from 'react'
+import React, { ChangeEvent, FormEvent, useEffect, useState } from 'react'
 import Spinner from './Spinner'
+import { toast } from 'react-toastify'
 
 const PropertyEditForm = () => {
 	const { id } = useParams<{ id: string | string[] }>()
@@ -111,7 +112,29 @@ const PropertyEditForm = () => {
 		setFields(prev => ({ ...prev, amenities: updatedAmenities }))
 	}
 
-	const handleSubmit = async () => {}
+	const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+		e.preventDefault()
+
+		try {
+			const formData = new FormData(e.target)
+
+			const res = await fetch(`/api/properties/${id}`, {
+				method: 'PUT',
+				body: formData,
+			})
+
+			if (res.status === 200) {
+				router.push(`/properties/${id}`)
+			} else if (res.status === 401 || res.status === 403) {
+				toast.error('Permission denied')
+			} else {
+				toast.error('Something went wrong')
+			}
+		} catch (error) {
+			console.log(error)
+			toast.error('Something went wrong')
+		}
+	}
 
 	if (loading) return <Spinner loading={loading} />
 
