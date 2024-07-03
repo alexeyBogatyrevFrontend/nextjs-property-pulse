@@ -2,6 +2,7 @@
 
 import PropertyDetails from '@/components/PropertyDetails'
 import PropertyHeaderImage from '@/components/PropertyHeaderImage'
+import PropertyImages from '@/components/PropertyImages'
 import Spinner from '@/components/Spinner'
 import { RootType } from '@/types'
 import { fetchProperty } from '@/utils/requests'
@@ -150,6 +151,8 @@ const PropertiesPage = () => {
 							</div>
 						</div>
 					</section>
+
+					<PropertyImages images={property.images} />
 				</>
 			)}
 		</>
