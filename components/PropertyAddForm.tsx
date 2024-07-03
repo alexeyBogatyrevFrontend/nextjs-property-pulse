@@ -6,26 +6,26 @@ import React, { ChangeEvent, useState } from 'react'
 const PropertyAddForm = () => {
 	const [fields, setFields] = useState<AddProperty>({
 		type: 'Apartment',
-		name: 'Test Name',
+		name: '',
 		description: '',
 		location: {
 			street: '',
-			city: 'Test City',
-			state: 'Test State',
+			city: '',
+			state: '',
 			zipcode: '',
 		},
-		beds: '3',
-		baths: '2',
-		square_feet: '1800',
+		beds: '',
+		baths: '',
+		square_feet: '',
 		amenities: [],
 		rates: {
 			weekly: '',
-			monthly: '2000',
+			monthly: '',
 			nightly: '',
 		},
 		seller_info: {
-			name: 'Alex',
-			email: 'test@test.com',
+			name: '',
+			email: '',
 			phone: '',
 		},
 		images: [],
@@ -78,6 +78,7 @@ const PropertyAddForm = () => {
 		const { files } = e.target
 
 		// Clone images array
+		// @ts-ignore
 		const updatedImages = [...fields.images]
 
 		// Add new files to the array
