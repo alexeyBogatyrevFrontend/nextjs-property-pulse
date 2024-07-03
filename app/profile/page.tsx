@@ -6,8 +6,8 @@ import React, { useEffect, useState } from 'react'
 import profileDefault from '@/assets/images/profile.png'
 import { useSession } from 'next-auth/react'
 import { GoogleUser, RootType } from '@/types'
-import { Session } from 'inspector'
 import Spinner from '@/components/Spinner'
+import { toast } from 'react-toastify'
 
 // Extend the Session type with GoogleUser
 declare module 'next-auth' {
@@ -71,13 +71,13 @@ const ProfilePage = () => {
 
 				setProperties(updatedProperties)
 
-				alert('Property Deleted')
+				toast.success('Property Deleted')
 			} else {
-				alert('Failed to delete property')
+				toast.error('Failed to delete property')
 			}
 		} catch (error) {
 			console.log(error)
-			alert('Failed to delete property')
+			toast.error('Failed to delete property')
 		}
 	}
 
@@ -110,42 +110,44 @@ const ProfilePage = () => {
 							{!loading && properties.length === 0 && (
 								<p>You have no property listings</p>
 							)}
-							{properties.map(property => (
-								<div key={property._id} className='mb-10'>
-									<Link href={`/properties/${property._id}`}>
-										<Image
-											className='h-32 w-full rounded-md object-cover'
-											src={property.images[0]}
-											alt='Property'
-											width={500}
-											height={100}
-											priority={true}
-										/>
-									</Link>
-									<div className='mt-2'>
-										<p className='text-lg font-semibold'>{property.name}</p>
-										<p className='text-gray-600'>
-											Address: {property.location.street}{' '}
-											{property.location.city} {property.location.state}
-										</p>
-									</div>
-									<div className='mt-2'>
-										<Link
-											href={`/properties/${property._id}/edit`}
-											className='bg-blue-500 text-white px-3 py-3 rounded-md mr-2 hover:bg-blue-600'
-										>
-											Edit
+							{properties
+								.map(property => (
+									<div key={property._id} className='mb-10'>
+										<Link href={`/properties/${property._id}`}>
+											<Image
+												className='h-32 w-full rounded-md object-cover'
+												src={property.images[0]}
+												alt='Property'
+												width={500}
+												height={100}
+												priority={true}
+											/>
 										</Link>
-										<button
-											onClick={() => handleDeleteProperty(property._id)}
-											className='bg-red-500 text-white px-3 py-2 rounded-md hover:bg-red-600'
-											type='button'
-										>
-											Delete
-										</button>
+										<div className='mt-2'>
+											<p className='text-lg font-semibold'>{property.name}</p>
+											<p className='text-gray-600'>
+												Address: {property.location.street}{' '}
+												{property.location.city} {property.location.state}
+											</p>
+										</div>
+										<div className='mt-2'>
+											<Link
+												href={`/properties/${property._id}/edit`}
+												className='bg-blue-500 text-white px-3 py-3 rounded-md mr-2 hover:bg-blue-600'
+											>
+												Edit
+											</Link>
+											<button
+												onClick={() => handleDeleteProperty(property._id)}
+												className='bg-red-500 text-white px-3 py-2 rounded-md hover:bg-red-600'
+												type='button'
+											>
+												Delete
+											</button>
+										</div>
 									</div>
-								</div>
-							))}
+								))
+								.reverse()}
 						</div>
 					</div>
 				</div>
