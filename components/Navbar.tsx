@@ -8,7 +8,7 @@ import { FaGoogle } from 'react-icons/fa'
 import { useEffect, useState } from 'react'
 import { usePathname } from 'next/navigation'
 import { getProviders, signIn, signOut, useSession } from 'next-auth/react'
-import { GoogleUser, RootGoogleType } from '@/types'
+import { RootGoogleType } from '@/types'
 
 const Navbar = () => {
 	const { data: session } = useSession()
@@ -29,6 +29,11 @@ const Navbar = () => {
 
 		setAuthProviders()
 	}, [])
+
+	const hangleSignOut = () => {
+		setIsProfileMenuOpen(false)
+		signOut()
+	}
 
 	return (
 		<nav className='bg-blue-700 border-b border-blue-500'>
@@ -213,10 +218,7 @@ const Navbar = () => {
 											role='menuitem'
 											tabIndex={-1}
 											id='user-menu-item-2'
-											onClick={() => {
-												setIsProfileMenuOpen(false)
-												signOut()
-											}}
+											onClick={hangleSignOut}
 										>
 											Sign Out
 										</button>
