@@ -10,6 +10,7 @@ type MessageComponentType = {
 
 const Message: FC<MessageComponentType> = ({ message }) => {
 	const [isRead, setIsRead] = useState(message.read)
+	const [isDeleted, setIsDeleted] = useState(false)
 
 	const handleReadClick = async () => {
 		try {
@@ -30,6 +31,26 @@ const Message: FC<MessageComponentType> = ({ message }) => {
 			console.log(error)
 			toast.error('Something went wrong')
 		}
+	}
+
+	const handleDeleteClick = async () => {
+		try {
+			const res = await fetch(`/api/messages/${message._id}`, {
+				method: 'DELETE',
+			})
+
+			if (res.status === 200) {
+				setIsDeleted(true)
+				toast.success('Message Deleted')
+			}
+		} catch (error) {
+			console.log(error)
+			toast.error('Message was not deleted')
+		}
+	}
+
+	if (isDeleted) {
+		return null
 	}
 
 	return (
@@ -75,7 +96,10 @@ const Message: FC<MessageComponentType> = ({ message }) => {
 			>
 				{isRead ? 'Mark As New' : 'Mark As Read'}
 			</button>
-			<button className='mt-4 bg-red-500 text-white py-1 px-3 rounded-md'>
+			<button
+				onClick={handleDeleteClick}
+				className='mt-4 bg-red-500 text-white py-1 px-3 rounded-md'
+			>
 				Delete
 			</button>
 		</div>
