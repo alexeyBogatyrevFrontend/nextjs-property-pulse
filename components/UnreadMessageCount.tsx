@@ -1,5 +1,6 @@
 'use client'
 
+import { useGlobalContext } from '@/context/GlobalContext'
 import React, { FC, useEffect, useState } from 'react'
 
 type UnreadMessageCountType = {
@@ -7,7 +8,8 @@ type UnreadMessageCountType = {
 }
 
 const UnreadMessageCount: FC<UnreadMessageCountType> = ({ session }) => {
-	const [unreadCount, setUnreadCount] = useState(0)
+	// @ts-ignore
+	const { unreadCount, setUnreadCount } = useGlobalContext()
 
 	useEffect(() => {
 		if (!session) return

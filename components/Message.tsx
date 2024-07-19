@@ -1,5 +1,6 @@
 'use client'
 
+import { useGlobalContext } from '@/context/GlobalContext'
 import { MessageType } from '@/types'
 import React, { FC, useState } from 'react'
 import { toast } from 'react-toastify'
@@ -12,6 +13,9 @@ const Message: FC<MessageComponentType> = ({ message }) => {
 	const [isRead, setIsRead] = useState(message.read)
 	const [isDeleted, setIsDeleted] = useState(false)
 
+	// @ts-ignore
+	const { setUnreadCount } = useGlobalContext()
+
 	const handleReadClick = async () => {
 		try {
 			const res = await fetch(`/api/messages/${message._id}`, { method: 'PUT' })
@@ -20,6 +24,7 @@ const Message: FC<MessageComponentType> = ({ message }) => {
 				const { read } = await res.json()
 
 				setIsRead(read)
+				setUnreadCount((prev: any) => (read ? prev - 1 : prev + 1))
 
 				if (read) {
 					toast.success('Marked as read')
@@ -41,6 +46,7 @@ const Message: FC<MessageComponentType> = ({ message }) => {
 
 			if (res.status === 200) {
 				setIsDeleted(true)
+				setUnreadCount((prev: any) => prev - 1)
 				toast.success('Message Deleted')
 			}
 		} catch (error) {
