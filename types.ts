@@ -97,3 +97,25 @@ export type AddProperty = {
 	owner?: string
 	images?: string[]
 }
+
+// message
+export type MessageType = {
+	_id: string
+	sender: Sender
+	recipient: string
+	property: Sender
+	name: string
+	email: string
+	phone: string
+	body: string
+	read: boolean
+	createdAt: string
+	updatedAt: string
+	__v: number
+}
+
+export type Sender = {
+	_id: string
+	username: string
+	name: string
+}
