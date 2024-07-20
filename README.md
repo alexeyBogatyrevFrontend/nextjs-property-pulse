@@ -1,36 +1,39 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Next.js Property Pulse
 
-## Getting Started
+Посмотреть проект: [Next.js Property Pulse](https://nextjs-property-pulse.vercel.app/)
 
-First, run the development server:
+## Описание
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Next.js Property Pulse - это мощное веб-приложение для управления и поиска недвижимости. Проект предоставляет удобный интерфейс для работы с картами, фотографиями и данными о недвижимости.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Технологии
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Проект использует следующие технологии:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### Основные зависимости
 
-## Learn More
+- **Next.js**: Версия 14.2.4, мощный React-фреймворк для серверного рендеринга и создания статических веб-приложений.
+- **React**: Версия 18, популярная библиотека для создания пользовательских интерфейсов.
+- **React DOM**: Версия 18, пакет для взаимодействия React с DOM.
 
-To learn more about Next.js, take a look at the following resources:
+### Визуализация и интерфейс
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Mapbox GL**: Версия 3.4.0, библиотека для работы с интерактивными картами.
+- **React Map GL**: Версия 7.1.7, компоненты для интеграции React и Mapbox.
+- **React Geocode**: Версия 1.0.0-alpha.1, библиотека для преобразования геокодов.
+- **React Icons**: Версия 5.2.1, коллекция иконок для React.
+- **React Share**: Версия 5.1.0, компоненты для простого создания кнопок поделиться.
+- **React Spinners**: Версия 0.14.1, библиотека спиннеров для загрузки в React.
+- **React Toastify**: Версия 10.0.5, библиотека для уведомлений в React.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### Обработка изображений
 
-## Deploy on Vercel
+- **Cloudinary**: Версия 2.2.0, сервис для хранения, обработки и доставки изображений.
+- **Photoswipe**: Версия 5.4.4, библиотека для создания галерей изображений.
+- **React Photoswipe Gallery**: Версия 3.0.2, компоненты для интеграции Photoswipe с React.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Аутентификация и управление данными
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- **Next Auth**: Версия 4.24.7, решение для аутентификации в Next.js.
+- **MongoDB**: Версия 6.7.0, NoSQL база данных.
+- **Mongoose**: Версия 8.4.4, объектно-документный моделер для MongoDB.
