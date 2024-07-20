@@ -6,9 +6,9 @@ import { fetchProperties } from '@/utils/requests'
 import { RootType } from '@/types'
 
 const HomeProperties = async () => {
-	const properties: RootType[] = await fetchProperties()
+	const data = await fetchProperties()
 
-	const recentProperties = properties
+	const recentProperties = data.properties
 		.sort(() => Math.random() - Math.random())
 		.slice(0, 3)
 

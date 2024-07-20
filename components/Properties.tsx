@@ -9,15 +9,25 @@ import Spinner from './Spinner'
 const Properties = () => {
 	const [properties, setProperties] = useState<RootType[]>([])
 	const [loading, setLoading] = useState(true)
+	const [page, setPage] = useState(1)
+	const [pageSize, setPageSize] = useState(3)
+	const [totalItems, setTotalItems] = useState(0)
 
 	useEffect(() => {
 		const fetchPropertiesData = async () => {
 			try {
-				const res = await fetchProperties()
+				const res = await fetch(
+					`/api/properties?page=${page}&pageSize=${pageSize}`
+				)
 
-				if (res) {
-					setProperties(res)
+				if (!res.ok) {
+					throw new Error('Failed to fetch data')
 				}
+
+				const data = await res.json()
+
+				setProperties(data.properties)
+				setTotalItems(data.total)
 			} catch (error) {
 				console.log(error)
 			} finally {
