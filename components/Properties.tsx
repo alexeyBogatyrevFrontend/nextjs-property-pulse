@@ -5,12 +5,13 @@ import React, { FC, useEffect, useState } from 'react'
 import PropertyCard from './PropertyCard'
 import { fetchProperties } from '@/utils/requests'
 import Spinner from './Spinner'
+import Pagination from './Pagination'
 
 const Properties = () => {
 	const [properties, setProperties] = useState<RootType[]>([])
 	const [loading, setLoading] = useState(true)
 	const [page, setPage] = useState(1)
-	const [pageSize, setPageSize] = useState(3)
+	const [pageSize, setPageSize] = useState(6)
 	const [totalItems, setTotalItems] = useState(0)
 
 	useEffect(() => {
@@ -36,12 +37,16 @@ const Properties = () => {
 		}
 
 		fetchPropertiesData()
-	}, [])
+	}, [page, pageSize])
 
 	// Sort properties by date
 	properties.sort(
 		(a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
 	)
+
+	const handleChangePage = (newPage: number) => {
+		setPage(newPage)
+	}
 
 	if (loading) return <Spinner loading={loading} />
 
@@ -57,6 +62,12 @@ const Properties = () => {
 						))}
 					</div>
 				)}
+				<Pagination
+					page={page}
+					pageSize={pageSize}
+					totalItems={totalItems}
+					onPageChange={handleChangePage}
+				/>
 			</div>
 		</section>
 	)
