@@ -40,9 +40,16 @@ const Properties = () => {
 	}, [page, pageSize])
 
 	// Sort properties by date
-	properties.sort(
-		(a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
-	)
+	const data = properties || []
+	const sortedData = Array.isArray(data)
+		? data.sort(
+				(a, b) =>
+					new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+		  )
+		: []
+	// properties.sort(
+	// 	(a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+	// )
 
 	const handleChangePage = (newPage: number) => {
 		setPage(newPage)
@@ -53,11 +60,11 @@ const Properties = () => {
 	return (
 		<section className='px-4 py-6'>
 			<div className='container-xl lg:container m-auto px-4 py-6'>
-				{properties.length === 0 ? (
+				{sortedData.length === 0 ? (
 					<p>No properties found</p>
 				) : (
 					<div className='grid grid-cols-1 md:grid-cols-3 gap-6'>
-						{properties.map((property: RootType) => (
+						{sortedData.map((property: RootType) => (
 							<PropertyCard key={property._id} property={property} />
 						))}
 					</div>

@@ -8,9 +8,14 @@ import { RootType } from '@/types'
 const HomeProperties = async () => {
 	const data = await fetchProperties()
 
-	const recentProperties = data.properties
-		.sort(() => Math.random() - Math.random())
-		.slice(0, 3)
+	const recentProperties = data.properties || []
+	const sortedData = Array.isArray(recentProperties)
+		? recentProperties.sort(() => Math.random() - Math.random()).slice(0, 3)
+		: []
+
+	// const recentProperties = data.properties
+	// 	.sort(() => Math.random() - Math.random())
+	// 	.slice(0, 3)
 
 	return (
 		<>
@@ -20,10 +25,10 @@ const HomeProperties = async () => {
 						Recent Properties
 					</h2>
 					<div className='grid grid-cols-1 md:grid-cols-3 gap-6'>
-						{recentProperties.length === 0 ? (
+						{sortedData.length === 0 ? (
 							<p>No Properties Found</p>
 						) : (
-							recentProperties.map((property: RootType) => (
+							sortedData.map((property: RootType) => (
 								<PropertyCard key={property._id} property={property} />
 							))
 						)}

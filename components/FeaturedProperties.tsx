@@ -1,10 +1,10 @@
 import { RootType } from '@/types'
-import { fetchProperties } from '@/utils/requests'
+import { fetchFeaturedProperties } from '@/utils/requests'
 import React from 'react'
 import FeaturedPropertyCard from './FeaturedPropertyCard'
 
 const FeaturedProperties = async () => {
-	const properties: RootType[] = await fetchProperties({ showFeatured: true })
+	const properties: RootType[] = await fetchFeaturedProperties()
 
 	return (
 		properties.length > 0 && (
