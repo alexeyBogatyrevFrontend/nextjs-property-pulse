@@ -1,39 +1,33 @@
 # Next.js Property Pulse
 
-Посмотреть проект: [Next.js Property Pulse](https://nextjs-property-pulse.vercel.app/)
+View Project: [Next.js Property Pulse](https://nextjs-property-pulse.vercel.app/)
 
-## Описание
+## Description
 
-Next.js Property Pulse - это мощное веб-приложение для управления и поиска недвижимости. Проект предоставляет удобный интерфейс для работы с картами, фотографиями и данными о недвижимости.
+Next.js Property Pulse is a powerful web application for property management and search. The project provides a user-friendly interface for working with maps, photos and property data.
 
-## Технологии
+## Technologies
 
-Проект использует следующие технологии:
+The project uses the following technologies:
 
-### Основные зависимости
+### Major dependencies
 
-- **Next.js**: Версия 14.2.4, мощный React-фреймворк для серверного рендеринга и создания статических веб-приложений.
-- **React**: Версия 18, популярная библиотека для создания пользовательских интерфейсов.
-- **React DOM**: Версия 18, пакет для взаимодействия React с DOM.
+- **Next.js**: Version 14.2.4, a powerful React framework for server-side rendering and creating static web applications.
+- **React**: Version 18, a popular library for creating user interfaces.
+- **React DOM**: Version 18, a package for interacting React with the DOM.
 
-### Визуализация и интерфейс
+### Visualisation and Interface
 
-- **Mapbox GL**: Версия 3.4.0, библиотека для работы с интерактивными картами.
-- **React Map GL**: Версия 7.1.7, компоненты для интеграции React и Mapbox.
-- **React Geocode**: Версия 1.0.0-alpha.1, библиотека для преобразования геокодов.
-- **React Icons**: Версия 5.2.1, коллекция иконок для React.
-- **React Share**: Версия 5.1.0, компоненты для простого создания кнопок поделиться.
-- **React Spinners**: Версия 0.14.1, библиотека спиннеров для загрузки в React.
-- **React Toastify**: Версия 10.0.5, библиотека для уведомлений в React.
+- **Mapbox GL**: Version 3.4.0, a library for working with interactive maps.
+- **React Map GL**: Version 7.1.7, components for integrating React and Mapbox.
+- **React Geocode**: Version 1.0.0-alpha.1, library for geocode conversion.
+- **React Icons**: Version 5.2.1, a collection of icons for React.
+- **React Share**: Version 5.1.0, components for easy creation of share buttons.
+- **React Spinners**: Version 0.14.1, a library of spinners to load into React.
+- **React Toastify**: Version 10.0.5, a library for notifications in React.
 
-### Обработка изображений
+### Image Processing
 
-- **Cloudinary**: Версия 2.2.0, сервис для хранения, обработки и доставки изображений.
-- **Photoswipe**: Версия 5.4.4, библиотека для создания галерей изображений.
-- **React Photoswipe Gallery**: Версия 3.0.2, компоненты для интеграции Photoswipe с React.
-
-### Аутентификация и управление данными
-
-- **Next Auth**: Версия 4.24.7, решение для аутентификации в Next.js.
-- **MongoDB**: Версия 6.7.0, NoSQL база данных.
-- **Mongoose**: Версия 8.4.4, объектно-документный моделер для MongoDB.
+- **Cloudinary**: Version 2.2.0, a service for storing, processing and delivering images.
+- **Photoswipe**: Version 5.4.4, a library for creating image galleries.
+- **React Photoswipe Gallery**: Version 3.0.2, components for integrating
